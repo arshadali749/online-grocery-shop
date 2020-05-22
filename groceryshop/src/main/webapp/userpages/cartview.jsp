@@ -1,23 +1,23 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 #categoriesmaincontainerdiv {
 	border: solid black 5px;
+}
+
+.productimage {
+	width: 100px;
+	height: 30px;
 }
 
 #productstablediv {
 	height: 500px;
 	overflow: scroll;
 }
-#addproductbtn
-{
-background-color: maroon;
-color: white;
-font-size: 20px;
-font-weight: bold;
-border-bottom: solid black 2px;
-}
-h1{
-margin-bottom: 0px;
-border-bottom: solid black 2px;
+
+h1 {
+	margin-bottom: 0px;
+	border-bottom: solid black 2px;
 }
 </style>
 
@@ -25,49 +25,50 @@ border-bottom: solid black 2px;
 <div id="categoriesmaincontainerdiv">
 	<div class="text-center ">
 
-		<h1>PRODUCTS LIST</h1>
-		<a id="addproductbtn" class="btn  col-sm-12" href="/admin/new/product/form">CLICK
-			TO ADD NEW PRODUCT</a>
+		<h1>YOUR SHOPPING LIST</h1>
+
+		<div class=" container-fluid row">
+
+			<a class="btn btn-success col-sm" href="/shop/">CLICK TO BUY MORE
+				PRODUCTS</a> <a class="btn btn-danger col col-sm" href="#">CHECK OUT</a>
+
+			<a href="/user/logout" class="btn btn-primary"><b>LOG OUT</b></a>
+
+		</div>
 	</div>
 	<div id="productstablediv">
 
-		<table class="table table-sm table-dark table-bordered ">
-
+		<table class="table table-sm table-dark table-bordered">
 			<thead>
 				<tr>
+					<th>PICTURE</th>
 					<th>ID</th>
 					<th>NAME</th>
 					<th>PRICE</th>
 					<th>QUANTIY</th>
-
-					<th>CATEGORY</th>
-					<th>SUB CATEGORY</th>
-					<th>COMPANY</th>
-					<th>MFG</th>
-					<th>EXP</th>
-					<th>WEIGHT</th>
-					<th>UNIT</th>
+					<th>SUB TOTAL</th>
+					<th>SUB TOTAL</th>
 					<th>EDIT</th>
 					<th>DELETE</th>
 				</tr>
 			</thead>
-			<c:forEach items="${products}" var="product">
+			<c:forEach items="${cartitems}" var="item">
 
 				<tr>
-					<td>${product.prod_id}</td>
-					<td>${product.prod_name}</td>
-					<td>${product.prod_unit_price}</td>
-					<td>${product.prod_qty}</td>
-					<td>${product.prod_category.name}</td>
-					<td>${product.prod_subcategory.name}</td>
-					<td>${product.prod_company.name}</td>
-					<td>${product.prod_mfg_date}</td>
-					<td>${product.prod_exp_date}</td>
-					<td>${product.prod_weight}</td>
-					<td>${product.prod_weight_unit}</td>
-					<td><a href="/admin/product/edit/${product.prod_id}"
+					<td><img class="productimage" alt="image here"
+						src="/images/background.jfif"></td>
+
+					<td>${item.item_id}</td>
+					<td>${item.product.prod_name}</td>
+					<td>${item.product.prod_unit_price}</td>
+					<td>${item.item_quantity}</td>
+					<td>${item.subtotal}</td>
+					<td>${item.total}</td>
+
+
+					<td><a href="/admin/product/edit/${item.item_id}"
 						class="btn btn-success btn-sm ">EDIT</a></td>
-					<td><a href="/admin/product/delete/${product.prod_id}"
+					<td><a href="/admin/product/delete/${item.item_id}"
 						class="btn btn-danger btn-sm ">DELETE</a></td>
 				</tr>
 			</c:forEach>

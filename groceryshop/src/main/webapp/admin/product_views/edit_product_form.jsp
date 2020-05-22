@@ -48,22 +48,43 @@ label {
 					<label class="col sol-sm-1">SELECT COMPANY</label> <select
 						name="companyid" class="form-control col sol-sm-2">
 						<option>--SLECT COMPANY--</option>
-						<c:forEach items="${companies}" var="company">
-							
-								<option value="${company.id }">${ company.name}</option>
-							
+						<c:forEach items="${companies}" var="com">
+							<c:choose>
+								<c:when test="${product.prod_company.name==com.name}">
+									<option value="${com.id }" selected="selected">${com.name}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${com.id }">${ company.name}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select> <label class="col sol-sm-1">SELECT CATEGORY</label> <select
 						name="categoryid" class="form-control col sol-sm-2">
 						<option>--SLECT CATEGORY--</option>
 						<c:forEach items="${categories}" var="category">
-							<option value="${category.id }">${ category.name}</option>
+							<c:choose>
+								<c:when test="${product.prod_category.name==category.name}">
+									<option value="${category.id }" selected="selected">${ category.name}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${category.id }">${ category.name}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select> <label class="col sol-sm-1">SELCT SUB CATEGORY</label> <select
 						name="subcategoryid" class="form-control col sol-sm-2">
 						<option>--SLECT SUB CATEGORY--</option>
+
 						<c:forEach items="${subcategories}" var="subcategory">
-							<option value="${subcategory.id }">${ subcategory.name}</option>
+							<c:choose>
+								<c:when
+									test="${product.prod_subcategory.name==subcategory.name }">
+									<option value="${subcategory.id }" selected="selected">${ subcategory.name}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${subcategory.id }">${ subcategory.name}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select> <label class="col sol-sm-1">WEIGHT UNIT</label> <select
 						name="prod_weight_unit" class="form-control col sol-sm-2">

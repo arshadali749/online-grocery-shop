@@ -24,9 +24,7 @@ thead {
 
 table {
 	height: 100px;
-	
 }
-
 
 body {
 	background-image: url("../images/background.jfif");
@@ -34,7 +32,6 @@ body {
 	padding-left: 10px;
 	padding-right: 10px;
 }
-
 
 ul li {
 	list-style-type: none;
@@ -55,85 +52,39 @@ tr:hover {
 	margin-top: 10px;
 	background-color: maroon;
 }
-
-
 </style>
 </head>
 <body>
-	<div>
-		<%@ include file="navebar.jsp"%>
-	</div>
+	
 	<div>
 
 
 
 
 		<c:choose>
-			<c:when test='${view=="categories"}'>
+			<c:when test='${view=="products_list"}'>
 				<div>
-					<%@ include file="/admin/category_views/categories.jsp"%>
+					<%@ include file="/userpages/shop.jsp"%>
 				</div>
-
 			</c:when>
-
-
-
-			<c:when test='${view=="edit_category"}'>
-
-				<%@ include file="/admin/category_views/edit_category.jsp"%>
-			</c:when>
-
-
-
-
-			<c:when test='${view=="subcategories"}'>
-
-				<%@ include file="/admin/subcategory_views/subcategories.jsp"%>
-			</c:when>
-
-			<c:when test='${view=="edit_subcategory"}'>
-
-				<%@ include file="/admin/subcategory_views/edit_subcategory.jsp"%>
-			</c:when>
-
-
-			<c:when test='${view=="companies"}'>
-
-				<%@ include file="/admin/company_views/companies.jsp"%>
+			<c:when test='${view=="cartview"}'>
+				<div>
+					<%@ include file="/userpages/cartview.jsp"%>
+				</div>
 			</c:when>
 			
 			
-			<c:when test='${view=="products"}'>
-
-				<%@ include file="/admin/product_views/products.jsp"%>
-			</c:when>
-			
-			<c:when test='${view=="new_product_form"}'>
-
-				<%@ include file="/admin/product_views/new_product_form.jsp"%>
+			<c:when test='${view=="products_list_with_pics"}'>
+				<div>
+					<%@ include file="/userpages/cartview_with_pics.jsp"%>
+				</div>
 			</c:when>
 			
 			
-			<c:when test='${view=="login_form"}'>
-
-				<%@ include file="/login.jsp"%>
-			</c:when>
-			
-			<c:when test='${view=="shop"}'>
-
-				<%@ include file="/userpages/shop.jsp"%>
-			</c:when>
-			
-			
-			<c:when test='${view=="edit_product"}'>
-
-				<%@ include file="/admin/product_views/edit_product_form.jsp"%>
-			</c:when>
-			
-			
-			<c:when test='${view=="sign_up"}'>
-
-				<%@ include file="/sign_up.jsp"%>
+			<c:when test='${view=="product_description_view"}'>
+				<div>
+					<%@ include file="/userpages/single_product_description.jsp"%>
+				</div>
 			</c:when>
 		</c:choose>
 	</div>

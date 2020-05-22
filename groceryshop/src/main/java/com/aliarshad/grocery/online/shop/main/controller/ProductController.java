@@ -118,8 +118,6 @@ public class ProductController {
 		model.addAttribute("companies", companyservice.getListOfCompanies());
 		model.addAttribute("categories", categoryservice.getListOfCategories());
 		model.addAttribute("subcategories", subcategoryservice.getListOfSubCategories());
-		model.addAttribute("view", "products");
-		model.addAttribute("title", "ADMIN;PRODUCTS");
 		return "redirect:/admin/products";
 
 	}
