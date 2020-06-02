@@ -25,31 +25,17 @@ nav {
 	height: 50px;
 }
 
-
-.menu
-{
-margin-left: 5px;
+span {
+	background-color: white;
+	color: red;
 }
 </style>
 
 <div id="categoriesmaincontainerdiv">
 
-	<div class="text-center ">
-		<%@ include file="/userpages/navebar.jsp"%></div>
 
-	<div class=" container-fluid row">
-
-
-		<a class="btn btn-danger menu col-sm" href="/orderitem/checkout">CHECK
-			OUT</a> 
-			<a class="btn btn-success menu col-sm" href="/shop/">CLICK TO BUY
-			MORE PRODUCTS</a>
-
-
-	</div>
 
 	<div id="productstablediv">
-
 
 		<table class="table table-sm table-dark table-bordered">
 			<thead>
@@ -65,23 +51,24 @@ margin-left: 5px;
 					<th>DELETE</th>
 				</tr>
 			</thead>
-			<c:forEach items="${cartitems}" var="item">
+			<c:forEach items="${orderitems}" var="item">
 
 				<tr>
 					<td><img class="productimage" alt="image here"
 						src="/images/background.jfif"></td>
 
-					<td>${item.item_id}</td>
+					<td>${item.id}</td>
 					<td>${item.product.prod_name}</td>
 					<td>${item.product.prod_unit_price}</td>
 					<td>${item.item_quantity}</td>
-					<td>${item.subtotal}</td>
+					<td>${item.sub_total}</td>
 					<td>${item.total}</td>
 
 
-					<td><a href="/cartitem/edit/${item.item_id}"
+					<td><a href="/orderitem/edit/orderitem/${item.id}"
 						class="btn btn-success btn-sm ">EDIT</a></td>
-					<td><a href="/cartitem/delete/${item.item_id}"
+					<td><a
+						href="/orderitem/delete/${item.order.id}/orderitem//${item.id}"
 						class="btn btn-danger btn-sm ">DELETE</a></td>
 				</tr>
 			</c:forEach>

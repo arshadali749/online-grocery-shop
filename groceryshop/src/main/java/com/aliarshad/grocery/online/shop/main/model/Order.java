@@ -1,21 +1,20 @@
 package com.aliarshad.grocery.online.shop.main.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user_orders")
 public class Order {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private int id;
-	
-	@ManyToMany
-	private List<User> user;
+	private String status;
+	@ManyToOne
+	private User user;
 
 	public int getId() {
 		return id;
@@ -25,13 +24,20 @@ public class Order {
 		this.id = id;
 	}
 
-	public List<User> getUser() {
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(List<User> user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
-	
 }

@@ -1,12 +1,9 @@
 package com.aliarshad.grocery.online.shop.main.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.OnDelete;
@@ -30,19 +27,8 @@ public class User {
 	@JoinColumn(name = "cart")
 	private Cart cart;
 
-	@ManyToMany
-	private List<Order> orders;
-
 	public int getId() {
 		return id;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
 	}
 
 	public void setId(int id) {

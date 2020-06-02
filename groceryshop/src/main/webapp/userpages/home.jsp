@@ -11,6 +11,11 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
+
 <style>
 h1 {
 	background-color: green;
@@ -29,8 +34,8 @@ table {
 body {
 	background-image: url("../images/background.jfif");
 	background-size: cover;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 5px;
+	
 }
 
 ul li {
@@ -55,7 +60,7 @@ tr:hover {
 </style>
 </head>
 <body>
-	
+
 	<div>
 
 
@@ -72,18 +77,43 @@ tr:hover {
 					<%@ include file="/userpages/cartview.jsp"%>
 				</div>
 			</c:when>
-			
-			
+
+
 			<c:when test='${view=="products_list_with_pics"}'>
 				<div>
 					<%@ include file="/userpages/cartview_with_pics.jsp"%>
 				</div>
 			</c:when>
-			
-			
+
+
 			<c:when test='${view=="product_description_view"}'>
 				<div>
 					<%@ include file="/userpages/single_product_description.jsp"%>
+				</div>
+			</c:when>
+
+
+			<c:when test='${view=="orders"}'>
+				<div>
+					<%@ include file="/userpages/orders.jsp"%>
+				</div>
+			</c:when>
+
+			<c:when test='${view=="order_detail"}'>
+				<div>
+					<%@ include file="/userpages/order_detail.jsp"%>
+				</div>
+			</c:when>
+
+			<c:when test='${view=="edit_order_item"}'>
+				<div>
+					<%@ include file="/userpages/edit_order_item.jsp"%>
+				</div>
+			</c:when>
+
+			<c:when test='${view=="edit_cart_item"}'>
+				<div>
+					<%@ include file="/userpages/edit_cart_item.jsp"%>
 				</div>
 			</c:when>
 		</c:choose>

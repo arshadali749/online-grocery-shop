@@ -1,5 +1,6 @@
 package com.aliarshad.grocery.online.shop.main.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +42,18 @@ public class CartItemService {
 		cartitemdao.saveAll(cartitems);
 	}
 
-	public void emptyCartItems() {
-		cartitemdao.deleteAll();
+	public List<CartItem> getCartItemsByCart(Cart cart) {
+		return cartitemdao.findByCart(cart);
 	}
 
-	public List<CartItem>getCartItemsByCart(Cart cart) {
-		 return cartitemdao.findByCart(cart);
+	public void deleteCartItemById(int id) {
+		cartitemdao.deleteById(id);
+	}
+
+	public void updateCartItem(int id, int qty) {
+		CartItem cartitem = cartitemdao.getOne(id);
+		cartitem.setItem_quantity(qty);
+		cartitemdao.save(cartitem);
 	}
 
 }

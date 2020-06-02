@@ -13,6 +13,7 @@
 #productstablediv {
 	height: 500px;
 	overflow: scroll;
+	border: solid black 5px;
 }
 
 h1 {
@@ -25,64 +26,48 @@ nav {
 	height: 50px;
 }
 
-
-.menu
-{
-margin-left: 5px;
+span {
+	background-color: white;
+	color: red;
+}
+#heading{
+background-color: gray;
+color: white;
+border: solid black 5px;
 }
 </style>
 
 <div id="categoriesmaincontainerdiv">
 
-	<div class="text-center ">
-		<%@ include file="/userpages/navebar.jsp"%></div>
-
-	<div class=" container-fluid row">
-
-
-		<a class="btn btn-danger menu col-sm" href="/orderitem/checkout">CHECK
-			OUT</a> 
-			<a class="btn btn-success menu col-sm" href="/shop/">CLICK TO BUY
-			MORE PRODUCTS</a>
-
-
+	<div id="heading" class="text-center">
+	<h1>YOUR ORDERS</h1>
 	</div>
 
 	<div id="productstablediv">
-
+	
 
 		<table class="table table-sm table-dark table-bordered">
 			<thead>
 				<tr>
-					<th>PICTURE</th>
-					<th>ID</th>
-					<th>NAME</th>
-					<th>PRICE</th>
-					<th>QUANTIY</th>
-					<th>SUB TOTAL</th>
-					<th>TOTAL</th>
-					<th>EDIT</th>
-					<th>DELETE</th>
+					<th>ORDER ID</th>
+					<th>USER CNIC</th>
+					<th>ORDER STATUS</th>
+					<th>DETAILS</th>
+					<th>CANCEL</th>
 				</tr>
 			</thead>
-			<c:forEach items="${cartitems}" var="item">
+			<c:forEach items="${orders}" var="order">
 
 				<tr>
-					<td><img class="productimage" alt="image here"
-						src="/images/background.jfif"></td>
-
-					<td>${item.item_id}</td>
-					<td>${item.product.prod_name}</td>
-					<td>${item.product.prod_unit_price}</td>
-					<td>${item.item_quantity}</td>
-					<td>${item.subtotal}</td>
-					<td>${item.total}</td>
+					<td>${order.id}</td>
+					<td>${order.user.cnic}</td>
+					<td>${order.status}</td>
 
 
-					<td><a href="/cartitem/edit/${item.item_id}"
-						class="btn btn-success btn-sm ">EDIT</a></td>
-					<td><a href="/cartitem/delete/${item.item_id}"
-						class="btn btn-danger btn-sm ">DELETE</a></td>
+					<td><a href="/order/detail/${order.id}"
+						class="btn btn-success btn-sm ">DETAILS</a></td>
+					<td><a href="/order/cancel/${order.id}"
+						class="btn btn-danger btn-sm ">CANCEL</a></td>
 				</tr>
 			</c:forEach>
 

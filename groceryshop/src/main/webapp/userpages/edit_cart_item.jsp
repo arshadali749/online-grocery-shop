@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
-
 .card {
 	margin-left: 200px;
 	margin-top: 10px;
@@ -23,7 +22,7 @@ label {
 <div class="card col-sm-8">
 	<div class="row text-center">
 		<div class="col-sm">
-			<h1>${product.prod_name}</h1>
+			<h1>${cartitem.product.prod_name}</h1>
 		</div>
 	</div>
 	<img class="card-img-top product_image" src="/images/background.jfif"
@@ -32,40 +31,37 @@ label {
 		<div class="row">
 
 			<div class="col-sm">
-				<label>COMPANY</label> <br> <span>${product.prod_company.name}</span>
+				<label>COMPANY</label> <br> <span>${cartitem.product.prod_company.name}</span>
 			</div>
 			<div class="col-sm">
-				<label>PRICE</label> <br> <span>${product.prod_unit_price}</span>
+				<label>PRICE</label> <br> <span>${cartitem.product.prod_unit_price}</span>
 			</div>
 			<div class="col-sm">
-				<label>WEIGHT</label> <br> <span>${product.prod_weight}</span>
-			</div>
-			<div class="col-sm">
-				<label>WEIGHT UNIT</label> <br> <span>${product.prod_weight_unit}</span>
+				<label>WEIGHT</label> <br> <span>${cartitem.product.prod_weight}${cartitem.product.prod_weight_unit}</span>
 			</div>
 
 		</div>
-		<form action="/cartitem/insert">
+		<form action="/cartitem/update">
 
 			<div class="row form-group">
 				<div class="col-sm">
 					<input class="form-control" type="hidden" name="prod_id"
-						value="${product.prod_id}">
+						value="${cartitem.item_id}">
 
 				</div>
 			</div>
 			<div class="row form-group">
 				<div class="col-sm">
-					<label>QUANTITY</label> <select name="prod_qty"
+					<label>QUANTITY</label> <select name="item_qty"
 						class="form-control">
 						<option>--select quantity--</option>
-						<c:forEach var="i" begin="1" end="${product.prod_qty }">
+						<c:forEach var="i" begin="1" end="${cartitem.product.prod_qty }">
 							<option value="${i}">${i}</option>
 						</c:forEach>
 					</select>
 				</div>
 			</div>
-			<input type="submit" value="ADD TO CART"
+			<input type="submit" value="UPDATE ITEM IN CART"
 				class="btn btn-success col-sm">
 		</form>
 	</div>
